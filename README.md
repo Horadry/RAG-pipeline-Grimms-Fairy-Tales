@@ -16,5 +16,5 @@ In order to make the retrieval process more efficient and to avoid regenerating 
 ## Step 4: Text Generation with Falcon 3B
 The _**Falcon 3B**_ generative model from Hunnging Face is used to generate coherent and contextually relevant answers based on the retrieved documents. When loading the generative model, I used the bfloat16 data type to reduce memory usage and accelerate computation, while still preserving the accuracy of the generative model. If we need to answer a question based on information found in a text, it is important that the text generation is deterministic, predictable with minimal creativity or randomness. Therefore, I set the temperature value to 0.0. During text generation the most probable token selection (num_beams=1) and avoiding repetitions with the no_repeat_ngram_size=1 setting proved to be the best. 
 
-## Step 5: Generating Answers**
+## Step 5: Generating Answers
 The retrieved context is provided as input to the Falcon 3B model, which generates the answer to the user’s query, utilizing the context fetched from the document retrieval step. For each user query, I specified separately how many tokens the generated response should consist of.
